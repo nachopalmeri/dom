@@ -1,10 +1,8 @@
 {
   "redirects": [
-    { "source": "/proyecto_final", "destination": "https://comidadebarrio.vercel.app/", "permanent": false },
-    { "source": "/proyecto_final/(.*)", "destination": "https://comidadebarrio.vercel.app/$1", "permanent": false },
-    { "source": "/Desarollo", "destination": "https://comidadebarrio.vercel.app/", "permanent": false },
+    { "source": "/Desarollo", "destination": "https://comidadebarrio.vercel.app", "permanent": false },
     { "source": "/Desarollo/(.*)", "destination": "https://comidadebarrio.vercel.app/$1", "permanent": false },
-    { "source": "/secciones", "destination": "https://comidadebarrio.vercel.app/secciones", "permanent": false },
-    { "source": "/secciones/(.*)", "destination": "https://comidadebarrio.vercel.app/secciones/$1", "permanent": false }
+    { "source": "/proyecto_final", "destination": "https://comidadebarrio.vercel.app", "permanent": false },
+    { "source": "/proyecto_final/(.*)", "destination": "https://comidadebarrio.vercel.app/$1", "permanent": false }
   ]
 }
