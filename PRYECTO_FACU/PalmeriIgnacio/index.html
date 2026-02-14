@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hub Principal | Ignacio Palmeri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1117;
+      --bg-soft: #151922;
+      --surface: #1b212f;
+      --line: #2f3950;
+      --text: #f7f9ff;
+      --muted: #a6b3cf;
+      --accent: #f8b530;
+      --accent-2: #f66a3a;
+      --good: #32d9a2;
+      --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      background:
+        radial-gradient(950px 550px at -10% -20%, #5d2e55 0%, transparent 55%),
+        radial-gradient(850px 500px at 110% 0%, #1f3b76 0%, transparent 58%),
+        linear-gradient(175deg, #0f1117 0%, #090b11 100%);
+    }
+
+    .container {
+      width: min(1150px, 92vw);
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 70px 0 35px;
+      position: relative;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      background: rgba(50, 217, 162, 0.1);
+      color: var(--good);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      margin-bottom: 18px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--good);
+      box-shadow: 0 0 8px var(--good);
+    }
+
+    h1 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(2.1rem, 4vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.6px;
+      max-width: 830px;
+      margin-bottom: 14px;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 700px;
+      font-size: 1.03rem;
+      margin-bottom: 25px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: transform 0.16s ease, box-shadow 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary {
+      background: linear-gradient(140deg, var(--accent) 0%, var(--accent-2) 100%);
+      color: #201300;
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .topbar {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 11px 12px;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: #f8b530;
+      box-shadow: 0 0 0 3px rgba(248, 181, 48, 0.2);
+    }
+
+    .counter {
+      color: var(--muted);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .cards {
+      padding: 24px 0 30px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      position: relative;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(140deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01)),
+        var(--surface);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      transform-style: preserve-3d;
+    }
+
+    .card:hover {
+      border-color: #f8b530;
+      transform: translateY(-5px);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      pointer-events: none;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(248, 181, 48, 0.16), transparent 35%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      color: #d6def8;
+      text-transform: uppercase;
+      letter-spacing: 0.45px;
+      margin-bottom: 11px;
+    }
+
+    .card h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 16px;
+      min-height: 64px;
+      font-size: 0.92rem;
+    }
+
+    .card a {
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 10px;
+      padding: 10px 13px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #191107;
+      background: #ffe2a6;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--muted);
+      text-align: center;
+      padding: 18px 0 34px;
+      font-size: 0.84rem;
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+
+      .counter {
+        justify-self: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <span class="status"><span class="status-dot"></span>Hub activo</span>
+      <h1>DOM Manipulation es el centro de todo tu portfolio.</h1>
+      <p class="lead">Este hub principal ahora tiene una visual mas pro, y todos los accesos abren en nueva pestaña para navegar mas rapido sin perder esta base.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary external-link" href="Ejercicios/ejercicio-jQuery/ejercicio-jQuery/index.html" target="_blank" rel="noopener noreferrer">Ir a DOM manipulation</a>
+        <a class="btn btn-secondary external-link" href="../proyecto_final/Desarollo/index.html" target="_blank" rel="noopener noreferrer">Abrir Proyecto Final</a>
+      </div>
+      <div class="topbar">
+        <input id="projectSearch" class="search" type="text" placeholder="Filtrar accesos por nombre o tecnologia (dom, bootstrap, final...)">
+        <p id="resultCounter" class="counter">Mostrando 4 accesos</p>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div id="cardsGrid" class="cards-grid">
+        <article class="card reveal" data-keywords="dom manipulation jquery interaccion javascript">
+          <span class="tag">Principal</span>
+          <h3>DOM manipulation (jQuery)</h3>
+          <p>Proyecto estrella y punto de partida. Interaccion dinamica y manipulado de elementos en tiempo real.</p>
+          <a class="external-link" href="Ejercicios/ejercicio-jQuery/ejercicio-jQuery/index.html" target="_blank" rel="noopener noreferrer">Abrir proyecto</a>
+        </article>
+
+        <article class="card reveal" data-keywords="proyecto final desarrollo ux ui">
+          <span class="tag">Entrega</span>
+          <h3>Proyecto Final - Desarrollo</h3>
+          <p>Version completa del proyecto final con secciones de producto listas para recorrer y validar.</p>
+          <a class="external-link" href="../proyecto_final/Desarollo/index.html" target="_blank" rel="noopener noreferrer">Abrir proyecto</a>
+        </article>
+
+        <article class="card reveal" data-keywords="bootstrap componentes ejercicio 7">
+          <span class="tag">Soporte</span>
+          <h3>Exercise 7 - Bootstrap</h3>
+          <p>Landing de componentes en Bootstrap usada como apoyo visual y tecnico dentro del portfolio.</p>
+          <a class="external-link" href="Ejercicios/ejercicio7paraparcial/ejercicio7/index.html" target="_blank" rel="noopener noreferrer">Abrir proyecto</a>
+        </article>
+
+        <article class="card reveal" data-keywords="hub principal navegacion index">
+          <span class="tag">Nucleo</span>
+          <h3>Hub principal</h3>
+          <p>Vista central que conecta todo tu ecosistema de paginas sin necesidad de buscar carpetas.</p>
+          <a class="external-link" href="index.html" target="_blank" rel="noopener noreferrer">Abrir en nueva pestaña</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Hub principal profesional con DOM scripting, filtros y navegacion multi-tab.
+  </footer>
+
+  <script>
+    const cards = Array.from(document.querySelectorAll(".card"));
+    const searchInput = document.getElementById("projectSearch");
+    const resultCounter = document.getElementById("resultCounter");
+
+    function updateCounter(visible) {
+      resultCounter.textContent = "Mostrando " + visible + " acceso" + (visible === 1 ? "" : "s");
+    }
+
+    function filterCards(query) {
+      const normalized = query.trim().toLowerCase();
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const text = (card.textContent + " " + (card.dataset.keywords || "")).toLowerCase();
+        const match = text.includes(normalized);
+        card.classList.toggle("hidden", !match);
+        if (match) visible += 1;
+      });
+
+      updateCounter(visible);
+    }
+
+    searchInput.addEventListener("input", (event) => {
+      filterCards(event.target.value);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    cards.forEach((card) => {
+      observer.observe(card);
+      card.addEventListener("mousemove", (event) => {
+        const rect = card.getBoundingClientRect();
+        const mx = ((event.clientX - rect.left) / rect.width) * 100;
+        const my = ((event.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty("--mx", mx + "%");
+        card.style.setProperty("--my", my + "%");
+      });
+    });
+
+    document.querySelectorAll("a.external-link").forEach((link) => {
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
+    });
+
+    updateCounter(cards.length);
+  </script>
+</body>
+</html>

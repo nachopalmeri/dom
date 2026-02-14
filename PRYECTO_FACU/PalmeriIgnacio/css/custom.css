@@ -1,0 +1,134 @@
+:root {
+    --color-rojo-principal: #FF0000;
+    --color-rojo-hover: #d60000;
+    --color-fondo: #000000;
+    --color-texto-principal: #1b1b1b;
+    --color-texto-secundario: #ffffff;
+    --color-borde: #000000;
+    --color-blanco-puro: #ffffff;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-secundario);
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6,
+.display-3, .display-4, .display-5 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-texto-principal);
+}
+
+hr {
+    border-top: 2px solid var(--color-borde);
+    opacity: 1;
+}
+
+.navbar.bg-black {
+    background-color: var(--color-fondo) !important;
+    border-bottom: 2px solid var(--color-borde);
+}
+
+.navbar-brand,
+.navbar-brand {
+    color: var(--color-texto-principal); 
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    color: var(--color-texto-secundario); 
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-rojo-principal) !important;
+}
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-rojo-principal) !important;
+}
+
+.btn-danger {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+    
+    background-color: var(--color-rojo-principal);
+    border-color: var(--color-rojo-principal);
+    color: var(--color-blanco-puro);
+    
+    border-radius: 0;
+    border-width: 2px;
+    
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: var(--color-rojo-hover);
+    border-color: var(--color-rojo-hover);
+    color: var(--color-blanco-puro);
+    transform: none;
+    box-shadow: none;
+}
+
+.custom-card {
+    border: 2px solid var(--color-borde);
+    background-color: var(--color-fondo);
+    border-radius: 0;
+    box-shadow: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-card:hover {
+    transform: scale(1.03);
+    box-shadow: none;
+    border-color: var(--color-rojo-principal);
+}
+
+.card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-rojo-principal);
+}
+
+.card-text {
+    color: var(--color-texto-secundario);
+}
+
+.carousel-caption {
+    background-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-caption h5 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#contacto a {
+    transition: color 0.3s ease;
+    color: var(--color-texto-principal);
+}
+
+#contacto a:hover {
+    color: var(--color-rojo-principal) !important;
+}
+
+footer {
+    background-color: var(--color-texto-principal);
+    color: var(--color-blanco-puro);
+}
